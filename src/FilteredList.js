@@ -8,6 +8,8 @@ class FilteredList extends Component {
     super(props);
     this.state = { //initial states
       size: "All",
+      frame: "All",
+      sort_price: "None"
     };
   }
 
@@ -15,17 +17,48 @@ class FilteredList extends Component {
     this.setState({size: event});
   }
 
+  onSelectFilterFrame = (event) => {
+    this.setState({frame: event});
+  }
+
+  onSelectSortPrice = (event) => {
+    this.setState({sort_price: event});
+  }
+
   matchesFilterSize = item => {
 	// all items should be shown when no filter is selected
 	if(this.state.size === "All") { 
-		return true
+		return true;
 	} else if (this.state.size === item.size) {
-		return true
+		return true;
 	} else {
-		return false
+		return false;
 	}
-}
+  }
 
+  matchesFilterFrame = item => {
+    // all items should be shown when no filter is selected
+    if(this.state.frame === "All") { 
+      return true;
+    } else if (this.state.frame === item.frame) {
+      return true;
+    } else {
+      return false;
+    }
+    }
+
+
+
+  sortPriceFunction = (a,b) => {
+    if(this.state.sort_price === "None") { 
+      return 0;
+    } else if (this.state.sort_price === "Price Low to High") {
+      return a.price-b.price;
+    } else {
+      return b.price-a.price;
+    }
+
+  }
 
   
 
@@ -37,7 +70,7 @@ class FilteredList extends Component {
         <div>
 
           <div class="col">
-            <h3>Filter by Size</h3>
+            <h3>Filter by Size :</h3>
             <DropdownButton id = "dropdown" title={this.state.size}>
               <Dropdown.Item id="dropdown-option" eventKey="Full Length" onSelect={this.onSelectFilterSize}>Full Length</Dropdown.Item>
               <Dropdown.Item id="dropdown-option" eventKey="Medium" onSelect={this.onSelectFilterSize}>Medium</Dropdown.Item>
@@ -46,7 +79,27 @@ class FilteredList extends Component {
             </DropdownButton>
           </div>
 
-          <DisplayList list={this.props.items.filter(this.matchesFilterSize)}/>
+          <div class="col">
+            <h3>Filter by Frame :</h3>
+            <DropdownButton id = "dropdown" title={this.state.frame}>
+              <Dropdown.Item id="dropdown-option" eventKey="Black" onSelect={this.onSelectFilterFrame}>Black</Dropdown.Item>
+              <Dropdown.Item id="dropdown-option" eventKey="Wood" onSelect={this.onSelectFilterFrame}>Wood</Dropdown.Item>
+              <Dropdown.Item id="dropdown-option" eventKey="Gold" onSelect={this.onSelectFilterFrame}>Gold</Dropdown.Item>
+              <Dropdown.Item id="dropdown-option" eventKey="White" onSelect={this.onSelectFilterFrame}>White</Dropdown.Item>
+              <Dropdown.Item id="dropdown-option" eventKey="All" onSelect={this.onSelectFilterFrame}>All</Dropdown.Item>
+            </DropdownButton>
+          </div>
+
+          <div class="col">
+            <h3>Sort By :</h3>
+            <DropdownButton id = "dropdown" title={this.state.frame}>
+              <Dropdown.Item id="dropdown-option" eventKey="Price Low to High" onSelect={this.onSelectSortPrice}>Price Low to High</Dropdown.Item>
+              <Dropdown.Item id="dropdown-option" eventKey="Price High to Low" onSelect={this.onSelectSortPrice}>Price High to Low</Dropdown.Item>
+              <Dropdown.Item id="dropdown-option" eventKey="None" onSelect={this.onSelectSortPrice}>None</Dropdown.Item>
+            </DropdownButton>
+          </div>
+
+          <DisplayList list={this.props.items.filter(this.matchesFilterSize).filter(this.matchesFilterFrame).sort(this.sortPriceFunction)}/>
           
         </div>
 

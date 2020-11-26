@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { DropdownButton, Dropdown} from "react-bootstrap";
 import DisplayList from "./DisplayList";
+import './App.css';
 
 
 class FilteredList extends Component {
@@ -69,18 +70,19 @@ class FilteredList extends Component {
         {/* renders the dropdowns for the list */}
         <div>
 
-          <div class="col">
-            <h3>Filter by Size :</h3>
+          <div class="title_row">
+            <div class="filter">
+            <h4>Filter by Size :</h4>
             <DropdownButton id = "dropdown" title={this.state.size}>
               <Dropdown.Item id="dropdown-option" eventKey="Full Length" onSelect={this.onSelectFilterSize}>Full Length</Dropdown.Item>
               <Dropdown.Item id="dropdown-option" eventKey="Medium" onSelect={this.onSelectFilterSize}>Medium</Dropdown.Item>
               <Dropdown.Item id="dropdown-option" eventKey="Small" onSelect={this.onSelectFilterSize}>Small</Dropdown.Item>
               <Dropdown.Item id="dropdown-option" eventKey="All" onSelect={this.onSelectFilterSize}>All</Dropdown.Item>
             </DropdownButton>
-          </div>
+            </div>
 
-          <div class="col">
-            <h3>Filter by Frame :</h3>
+            <div class="filter">
+            <h4>Filter by Frame :</h4>
             <DropdownButton id = "dropdown" title={this.state.frame}>
               <Dropdown.Item id="dropdown-option" eventKey="Black" onSelect={this.onSelectFilterFrame}>Black</Dropdown.Item>
               <Dropdown.Item id="dropdown-option" eventKey="Wood" onSelect={this.onSelectFilterFrame}>Wood</Dropdown.Item>
@@ -88,19 +90,23 @@ class FilteredList extends Component {
               <Dropdown.Item id="dropdown-option" eventKey="White" onSelect={this.onSelectFilterFrame}>White</Dropdown.Item>
               <Dropdown.Item id="dropdown-option" eventKey="All" onSelect={this.onSelectFilterFrame}>All</Dropdown.Item>
             </DropdownButton>
-          </div>
+            </div>
 
-          <div class="col">
-            <h3>Sort By :</h3>
+            <div class="filter">
+            <h4>Sort By :</h4>
             <DropdownButton id = "dropdown" title={this.state.frame}>
               <Dropdown.Item id="dropdown-option" eventKey="Price Low to High" onSelect={this.onSelectSortPrice}>Price Low to High</Dropdown.Item>
               <Dropdown.Item id="dropdown-option" eventKey="Price High to Low" onSelect={this.onSelectSortPrice}>Price High to Low</Dropdown.Item>
               <Dropdown.Item id="dropdown-option" eventKey="None" onSelect={this.onSelectSortPrice}>None</Dropdown.Item>
             </DropdownButton>
-          </div>
 
+            </div>
+
+          </div >
+
+          <div class="items_container">
           <DisplayList list={this.props.items.filter(this.matchesFilterSize).filter(this.matchesFilterFrame).sort(this.sortPriceFunction)}/>
-          
+          </div>
         </div>
 
 

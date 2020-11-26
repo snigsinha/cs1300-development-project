@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, CardActions, CardContent, Button, Typography, Chip} from '@material-ui/core';
+import { Card, CardActions, CardContent, Button, Typography, Chip, CardMedia} from '@material-ui/core';
 
 
 
@@ -14,6 +14,12 @@ class DisplayList extends Component {
         {this.props.list.map(item => 
         <Card>
           <CardContent>
+          <CardMedia
+          style = {{ height: 0}}
+        image={"images/"+ item.name +".jpg"}
+        title={item.name}
+      >
+      </CardMedia>
           <Typography variant={"h6"} gutterBottom>
           {item.name}
           </Typography>

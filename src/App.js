@@ -20,16 +20,18 @@ var productList = [
 class App extends Component {
   render() {
     return (
-      <div>
+      <div class="title_container">
 
-        <div>
+        <div class="title_row">
           {/*creates the heading for the page*/}
-          <h1>Vanity Store</h1>
-          <h2>Your one-stop shop for Mirrors!</h2>
+          <h1>The Vanity Store</h1>
+          
+        </div>
+        <div class="title_row">
+        <h2>Your one-stop shop for Mirrors!</h2>
         </div>
 
         <FilteredList items = {productList} />
-        
 
       </div>
     );

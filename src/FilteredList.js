@@ -70,8 +70,8 @@ class FilteredList extends Component {
         {/* renders the dropdowns for the list */}
         <div>
 
-          <div class="title_row">
-            <div class="filter">
+          <div className="title_row">
+            <div className="filter">
             <h4>Filter by Size :</h4>
             <DropdownButton id = "dropdown" title={this.state.size}>
               <Dropdown.Item id="dropdown-option" eventKey="Full Length" onSelect={this.onSelectFilterSize}>Full Length</Dropdown.Item>
@@ -81,7 +81,7 @@ class FilteredList extends Component {
             </DropdownButton>
             </div>
 
-            <div class="filter">
+            <div className="filter">
             <h4>Filter by Frame :</h4>
             <DropdownButton id = "dropdown" title={this.state.frame}>
               <Dropdown.Item id="dropdown-option" eventKey="Black" onSelect={this.onSelectFilterFrame}>Black</Dropdown.Item>
@@ -92,7 +92,7 @@ class FilteredList extends Component {
             </DropdownButton>
             </div>
 
-            <div class="filter">
+            <div className="filter">
             <h4>Sort By :</h4>
             <DropdownButton id = "dropdown" title={this.state.frame}>
               <Dropdown.Item id="dropdown-option" eventKey="Price Low to High" onSelect={this.onSelectSortPrice}>Price Low to High</Dropdown.Item>
@@ -104,7 +104,7 @@ class FilteredList extends Component {
 
           </div >
 
-          <div class="items_container">
+          <div className="items_container">
           <DisplayList list={this.props.items.filter(this.matchesFilterSize).filter(this.matchesFilterFrame).sort(this.sortPriceFunction)}/>
           </div>
         </div>

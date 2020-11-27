@@ -30,7 +30,7 @@
 
 .title_row {
   display: flex;
-  flex-wrap: wrap;
+
   justify-content: center;
   align-items: center;
 }
@@ -46,12 +46,17 @@
 }
 
 .items_container {
-  background-color: white;
-  grid-row: 1;
-  grid-column: 2;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  background-color: gray;
+  display: flex;
+  flex-direction: row;
+  
 }
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
 
 
 

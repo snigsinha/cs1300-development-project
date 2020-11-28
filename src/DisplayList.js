@@ -33,14 +33,9 @@ removeFromCart = (item_name, item_price) => {
   this.state.cart.splice(index, 1);
 
 
-
-
   this.setState({ 
     cart: this.state.cart
   })
-
-
-
   
 }
 
@@ -49,7 +44,11 @@ removeFromCart = (item_name, item_price) => {
 
     return (
       
-        <div>
+        <div className="row">
+          <div className="col">
+        <DisplayCart cart={this.state.cart} removeFunction={this.removeFromCart}></DisplayCart>
+        </div>
+
           
           
           <div className="container">
@@ -90,9 +89,7 @@ removeFromCart = (item_name, item_price) => {
     
         )}
 
-<div className="col">
-        <DisplayCart cart={this.state.cart} removeFunction={this.removeFromCart}></DisplayCart>
-        </div>
+
 
         </div>
 

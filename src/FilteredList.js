@@ -70,7 +70,7 @@ class FilteredList extends Component {
         {/* renders the dropdowns for the list */}
         <div>
 
-          <div className="title_row">
+          <div className="filter_row">
             <div className="filter">
             <h4>Filter by Size :</h4>
             <DropdownButton id = "dropdown" title={this.state.size}>

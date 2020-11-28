@@ -33,9 +33,9 @@ addToCart = (curr_name, curr_price) => {
     return (
       
         <div>
-          <div className="col">
+          <div className="container">
         {this.props.list.map(item => 
-        <Card style = {{margin-bottom: 10}}>
+        <Card className="card">
           <CardContent>
           <CardMedia
           style = {{ height: 200, width:200}}
@@ -47,11 +47,11 @@ addToCart = (curr_name, curr_price) => {
           {item.name}
           </Typography>
           <div className="button">
-          <Chip label={"Size: " + item.size} >
+          <Chip className="chip" label={"Size: " + item.size} >
           </Chip>
-          <Chip label={"Frame Colour: " + item.frame} >
+          <Chip className="chip" label={"Frame Colour: " + item.frame} >
           </Chip>
-          <Chip label={"$" + item.price + ".00"} >
+          <Chip className="chip" label={"$" + item.price + ".00"} >
           </Chip>
           </div>
 

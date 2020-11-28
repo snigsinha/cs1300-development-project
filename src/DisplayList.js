@@ -16,7 +16,6 @@ class DisplayList extends Component {
 }
 
 addToCart = (curr_name, curr_price) => {
-  console.log("click");
 
   this.setState({ 
     cart: this.state.cart.concat([{name: curr_name, price: curr_price}])
@@ -25,7 +24,25 @@ addToCart = (curr_name, curr_price) => {
  
 }
 
+removeFromCart = (item_name, item_price) => {
 
+
+  let removed_element = {name: item_name, price: item_price};
+
+  const index = this.state.cart.indexOf(removed_element);
+  this.state.cart.splice(index, 1);
+
+
+
+
+  this.setState({ 
+    cart: this.state.cart
+  })
+
+
+
+  
+}
 
 
   render() {
@@ -33,8 +50,12 @@ addToCart = (curr_name, curr_price) => {
     return (
       
         <div>
+          
+          
           <div className="container">
         {this.props.list.map(item => 
+
+       
         <Card className="card">
           <CardContent>
           <CardMedia
@@ -64,11 +85,18 @@ addToCart = (curr_name, curr_price) => {
         </IconButton>
         
         </CardContent>
-        </Card>)}
+        </Card>
+        
+    
+        )}
+
+<div className="col">
+        <DisplayCart cart={this.state.cart} removeFunction={this.removeFromCart}></DisplayCart>
         </div>
-          <div className="col">
-        <DisplayCart cart={this.state.cart}></DisplayCart>
+
         </div>
+
+          
      
         </div>
         

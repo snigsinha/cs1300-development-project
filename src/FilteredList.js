@@ -94,7 +94,7 @@ class FilteredList extends Component {
 
             <div className="filter">
             <h4>Sort By :</h4>
-            <DropdownButton id = "dropdown" title={this.state.frame}>
+            <DropdownButton id = "dropdown" title={this.state.sort_price}>
               <Dropdown.Item id="dropdown-option" eventKey="Price Low to High" onSelect={this.onSelectSortPrice}>Price Low to High</Dropdown.Item>
               <Dropdown.Item id="dropdown-option" eventKey="Price High to Low" onSelect={this.onSelectSortPrice}>Price High to Low</Dropdown.Item>
               <Dropdown.Item id="dropdown-option" eventKey="None" onSelect={this.onSelectSortPrice}>None</Dropdown.Item>
